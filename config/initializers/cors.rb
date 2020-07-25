@@ -9,12 +9,10 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
-    origins 'example.com'
+    origins 'https://ts-react-boilerplate.herokuapp.com/'
 
     resource '*',
              headers: :any,
              methods: %i[get post patch delete head]
   end
 end
-
-Rails.application.config.hosts << 'https://ts-react-boilerplate.herokuapp.com/'
