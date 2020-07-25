@@ -21,6 +21,8 @@ Simple boilerplate to bootstrap a Rails API
 
 1.  `rails server`
 
+You can also use it with the TypeScript React boilerplate [here](https://github.com/GGrassiant/ts-react-boilerplate)
+
 It will run on localhost:3000
 
 ## 🚀 To do

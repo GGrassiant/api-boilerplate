@@ -18,7 +18,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def update
-    if @item.update_attributes!(item_params)
+    if @item.update!(item_params)
       render :show
     else
       render_error
@@ -39,7 +39,7 @@ class Api::V1::ItemsController < ApplicationController
   end
 
   def item_params
-    params.permit(:name, :description)
+    params.permit(:id, :name, :description)
   end
 
   def render_error
