@@ -4,4 +4,4 @@ require_relative 'application'
 # Initialize the Rails application.
 Rails.application.initialize!
 
-Rails.application.config.hosts << 'api-boilerplate-rails.herokuapp.com'
+Rails.application.config.hosts << 'https://ts-react-boilerplate.herokuapp.com/'
