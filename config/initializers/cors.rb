@@ -16,3 +16,5 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
              methods: %i[get post patch delete head]
   end
 end
+
+Rails.application.config.hosts << 'https://ts-react-boilerplate.herokuapp.com/'
