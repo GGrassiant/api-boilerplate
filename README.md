@@ -22,3 +22,6 @@ Simple boilerplate to bootstrap a Rails API
 1.  `rails server`
 
 It will run on localhost:3000
+
+## 🚀 To do
+-   Add tests
