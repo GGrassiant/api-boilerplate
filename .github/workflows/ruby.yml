@@ -36,12 +36,11 @@ jobs:
       run: bundle install
 
     - name: Setup test database
-        env:
-          RAILS_ENV: test
-          PGHOST: localhost
-          PGUSER: myapp
-        run: |
-          bin/rails db:setup
+      env:
+        RAILS_ENV: test
+        PGHOST: localhost
+        PGUSER: myapp
+      run: bin/rails db:setup
 
     - name: Run tests
       run: bundle exec rspec
