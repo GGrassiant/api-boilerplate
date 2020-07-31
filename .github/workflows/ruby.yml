@@ -1,16 +1,13 @@
-name: Api boilerplate
+env:
+  CLIENT_HOST: 'https://ts-react-boilerplate.herokuapp.com'
+
+name: Api boilerplate CI
 
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
-env:
-  POSTGRES_USER: postgres
-  POSTGRES_PASSWORD: ""
-  POSTGRES_DB: postgres
-  CLIENT_HOST: 'https://ts-react-boilerplate.herokuapp.com'
 
 jobs:
   tests:
@@ -27,6 +24,11 @@ jobs:
         ruby-version: 2.6
     - name: Install dependencies
       run: bundle install
+
+    - name: Create database
+      run:
+        bundle exec rails db:create RAILS_ENV=test
+        bundle exec rails db:migrate RAILS_ENV=test
+
     - name: Run tests
-      RAILS_ENV=test
       run: bundle exec rspec
