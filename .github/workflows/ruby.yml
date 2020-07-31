@@ -6,9 +6,14 @@ on:
   pull_request:
     branches: [ master ]
 
-jobs:
-  test:
+env:
+  POSTGRES_USER: postgres
+  POSTGRES_PASSWORD: ""
+  POSTGRES_DB: postgres
+  CLIENT_HOST: 'https://ts-react-boilerplate.herokuapp.com'
 
+jobs:
+  tests:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,4 +28,5 @@ jobs:
     - name: Install dependencies
       run: bundle install
     - name: Run tests
+      RAILS_ENV=test
       run: bundle exec rspec
