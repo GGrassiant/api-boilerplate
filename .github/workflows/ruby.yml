@@ -1,3 +1,6 @@
+env:
+  CLIENT_HOST: 'https://ts-react-boilerplate.herokuapp.com'
+
 name: API Boilerplate CI
 
 on:
