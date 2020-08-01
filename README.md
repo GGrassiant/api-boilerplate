@@ -11,6 +11,8 @@ Simple boilerplate to bootstrap a Rails API
 
 1.  **PostgreSQL**
 
+1.  **Rspec**
+
 ## 🚀 How to use
 
 1.  `bundle install`
