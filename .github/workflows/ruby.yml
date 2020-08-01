@@ -1,5 +1,9 @@
 env:
   CLIENT_HOST: 'https://ts-react-boilerplate.herokuapp.com'
+  POSTGRES_PASSWORD: postgres
+  POSTGRES_USER: postgres
+  POSTGRES_HOST: localhost
+  RAILS_ENV: test
 
 name: API Boilerplate CI
 
@@ -8,41 +12,39 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
 jobs:
-  test:
-
+  build:
     runs-on: ubuntu-latest
-    
     services:
       postgres:
-        image: postgres:11
+        image: postgres:latest
+        ports:
+          - 5432:5432
         env:
-          POSTGRES_USER: myapp
-          POSTGRES_DB: myapp_test
-          POSTGRES_PASSWORD: ""
-        ports: ["5432:5432"]
-
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Set up Ruby
-    # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
-    # change this to (see https://github.com/ruby/setup-ruby#versioning):
-    # uses: ruby/setup-ruby@v1
-      uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
-      with:
-        ruby-version: 2.6
-    - name: Install dependencies
-      run: bundle install
+      - uses: actions/checkout@v2
 
-    - name: Install postgres client
-      run: sudo apt-get install libpq-dev
-        
-    - name: Create database
-      run: |
-        bundle exec rails db:create RAILS_ENV=test
-        bundle exec rails db:migrate RAILS_ENV=test
-        
-    - name: Run tests
-      run: bundle exec rspec
+      - name: Set up Ruby version (using project .ruby-version)
+        uses: eregon/use-ruby-action@master
+
+      - name: Install dependent libraries
+        run: sudo apt-get install libpq-dev
+
+      - name: Bundle install
+        run: |
+          gem install bundler
+          bundle install --jobs 4 --retry 3
+
+      - name: Setup the postgres database
+        run: bundle exec rake db:setup
+
+      - name: Run RSpec tests
+        run: bundle exec rspec
