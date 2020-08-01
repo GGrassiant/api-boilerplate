@@ -35,13 +35,14 @@ jobs:
         ruby-version: 2.6
     - name: Install dependencies
       run: bundle install
-      
-    - name: Setup test database
-      env:
-        RAILS_ENV: test
-        PGHOST: localhost
-        PGUSER: myapp
-      run: bin/rails db:setup
 
+    - name: Install postgres client
+      run: sudo apt-get install libpq-dev
+        
+    - name: Create database
+      run: |
+        bundle exec rails db:create RAILS_ENV=test
+        bundle exec rails db:migrate RAILS_ENV=test
+        
     - name: Run tests
       run: bundle exec rspec
