@@ -1,5 +1,5 @@
 <h1 align="center"> 
-  API Boilerplate <img alt="Help-wanted" src="https://img.shields.io/github/workflow/status/ggrassiant/api-boilerplate/API%20Boilerplate%20CI"> <img alt="Help-wanted" src="https://img.shields.io/badge/help-wanted-brightgreen.svg?style=flat">
+  API Boilerplate <img alt="Build passing" src="https://img.shields.io/github/workflow/status/ggrassiant/api-boilerplate/API%20Boilerplate%20CI"> <img alt="Help-wanted" src="https://img.shields.io/badge/help-wanted-brightgreen.svg?style=flat">
 </h1>
 Simple boilerplate to bootstrap a Rails API
 
