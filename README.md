@@ -26,7 +26,3 @@ Simple boilerplate to bootstrap a Rails API
 You can also use it with the TypeScript React boilerplate [here](https://github.com/GGrassiant/ts-react-boilerplate)
 
 It will run on localhost:3000
-
-## 🚀 To do
-- Would need help to write tests and have a high coverage
-- Add Rubocop to CI
