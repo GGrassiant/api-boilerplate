@@ -25,6 +25,4 @@ Simple boilerplate to bootstrap a Rails API
 
 It expects client call from localhost:3001
 
-You can also use it with the TypeScript React boilerplate [here](https://github.com/GGrassiant/ts-react-boilerplate)
-
 It will run on localhost:3000
