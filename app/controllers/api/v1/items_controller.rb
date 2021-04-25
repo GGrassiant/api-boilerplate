@@ -8,6 +8,11 @@ class Api::V1::ItemsController < ApplicationController
     @items = Item.order('created_at DESC')
   end
 
+  def elements(type: 'jsonplaceholder')
+    service = ExternalServiceMiddleware.new(type: type)
+    @elements = service.run!
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save!
