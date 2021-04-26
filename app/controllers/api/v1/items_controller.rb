@@ -8,9 +8,11 @@ class Api::V1::ItemsController < ApplicationController
     @items = Item.order('created_at DESC')
   end
 
-  def elements(type: 'jsonplaceholder')
-    service = ExternalServiceMiddleware.new(type: type)
-    @elements = service.run!
+  def elements
+    filtered_params = search_params
+    service = ExternalServiceMiddleware.new(type: filtered_params["type"])
+    data = service.run!
+    @elements = data.try(:results).present? ? data.results : data
   end
 
   def create
@@ -45,6 +47,10 @@ class Api::V1::ItemsController < ApplicationController
 
   def item_params
     params.permit(:id, :name, :description)
+  end
+
+  def search_params
+    params.permit(:type)
   end
 
   def render_error
