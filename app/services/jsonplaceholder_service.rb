@@ -10,7 +10,7 @@ class JsonplaceholderService
   private
 
   def token
-    ENV["JSON_PLACEHOLDER_TOKEN"]
+    Rails.application.secrets["json_placeholder"]
   end
 
   def http_caller_instance

@@ -14,6 +14,8 @@ class ExternalServiceMiddleware
     case @type
     when 'jsonplaceholder'
       JsonplaceholderService.new(@params)
+    else
+      JsonplaceholderService.new(@params)
     end
   end
 end
