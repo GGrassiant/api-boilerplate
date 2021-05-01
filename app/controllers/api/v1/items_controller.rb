@@ -10,7 +10,7 @@ class Api::V1::ItemsController < ApplicationController
 
   def elements
     filtered_params = search_params
-    service = ExternalServiceMiddleware.new(type: filtered_params["type"])
+    service = ExternalServiceMiddleware.new(type: filtered_params['type'])
     data = service.run!
     @elements = data.try(:results).present? ? data.results : data
   end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :items, only: %i[index show update create destroy]
-      post :elements, to: "items#elements", as: :elements
+      post :elements, to: 'items#elements', as: :elements
     end
   end
 end

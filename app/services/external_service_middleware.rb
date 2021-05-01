@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Middleware for external calls
 class ExternalServiceMiddleware
   def initialize(type:, params: {})
     @type = type
